@@ -1,5 +1,7 @@
 package algorithms.search;
 
 public interface ISearchingAlgorithm {
-    public AState search(ISearchable s);
+    public Solution solve(ISearchable s);
+    public int getNumberOfNodesEvaluated();
+    public String getName();
 }

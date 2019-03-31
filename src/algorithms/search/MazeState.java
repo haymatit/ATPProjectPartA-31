@@ -2,14 +2,17 @@ package algorithms.search;
 
 import algorithms.mazeGenerators.Position;
 
+import java.util.ArrayList;
+
 public class MazeState extends AState{
     private Position current;
-    private Position cameFrom;
     private int cost;
 
-    public MazeState(Position current, Position cameFrom, int cost) {
+    public MazeState(Position current) {
+        super(cameFrom);
         this.current = current;
-        this.cameFrom = cameFrom;
         this.cost = 1;
     }
+
+
 }

@@ -5,3 +5,4 @@ public interface ISearchingAlgorithm {
     public int getNumberOfNodesEvaluated();
     public String getName();
 }
+

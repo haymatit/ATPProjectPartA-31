@@ -12,7 +12,6 @@ public class MazeState extends AState{
     public MazeState(Position current) {
         super(null,1);
         this.current = current;
-
     }
 
 //    public MazeState(MazeState cameFrom,Position current) {

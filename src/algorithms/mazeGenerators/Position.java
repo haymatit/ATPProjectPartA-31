@@ -1,4 +1,7 @@
 package algorithms.mazeGenerators;
+
+import java.util.Objects;
+
 /**
  * The Position is a class that describe a cell in the maze game.
  * there are a integer row that shows the row in the position,
@@ -34,4 +37,14 @@ public class Position {
     public int getColumnIndex() {
         return col;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return row == position.row &&
+                col == position.col;
+    }
+
 }

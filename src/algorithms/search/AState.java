@@ -11,13 +11,7 @@ public abstract class AState {
     }
 
     @Override
-    public boolean equals(Object o) {//?
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AState aState = (AState) o;
-        return Objects.equals();
-    }
-
+    public abstract boolean equals(Object o);
 
     @Override
     public String toString() {

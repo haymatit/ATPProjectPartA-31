@@ -28,7 +28,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     private boolean DFSrecursive(ISearchable s,Solution sol,AState current){
         if(neighboorsUnVisited(s.getAllPossibleStates(current)))
             return false;
-        if(current.equals(s.getEndState())==0)
+        if(current.equals(s.getEndState()))
             return true;
 
 
@@ -37,6 +37,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     private boolean neighboorsUnVisited(ArrayList<AState> listNeighboors){
         for (AState state:listNeighboors) {
             if(visited.contains(state))
+                return true;
         }
         return false;
     }

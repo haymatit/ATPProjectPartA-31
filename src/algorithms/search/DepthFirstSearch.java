@@ -6,8 +6,6 @@ import java.util.Stack;
 public class DepthFirstSearch extends ASearchingAlgorithm{
     Stack<AState> stack= new Stack<>();
     HashSet<AState> visited = new HashSet<>();
-    private AState[][] prev;
-    private AState lastNode;
 
     public DepthFirstSearch() {
         super("Depth First Search");
@@ -19,27 +17,51 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
         while(!stack.isEmpty()) {
             AState tmp = stack.pop();
             visited.add(tmp);
-
-
+            if (tmp.equals(s.getEndState()))
+                break;
+            for(AState node : s.getAllPossibleStates(tmp)) {
+                if (!visited.contains(node)) {
+                    stack.push(node);
+                    node.setCameFrom(tmp);
+                }
+            }
+        }
+        AState skipper=s.getEndState();
+        while(skipper!=null) {
+            sol.addToPath(skipper);
+            skipper=skipper.getCameFrom();
         }
         return sol;
     }
 
-    private boolean DFSrecursive(ISearchable s,Solution sol,AState current){
-        if(neighboorsUnVisited(s.getAllPossibleStates(current)))
-            return false;
-        if(current.equals(s.getEndState()))
+    private boolean DFSrecursive(ISearchable s,AState current){
+        ArrayList<AState> possibleStates=neighboorsUnVisited(s.getAllPossibleStates(current));
+        if(current.equals(s.getEndState())) {
+            stack.push(current);
             return true;
-
-
+        }
+        if(possibleStates.isEmpty())
+            return false;
+        visited.add(current);
+        stack.push(current);
+        boolean flag=false;
+        for (AState next:possibleStates) {
+            if (DFSrecursive(s, next))
+                flag = true;
+        }
+        if(flag==false)
+            stack.pop();
+        return flag;
     }
 
-    private boolean neighboorsUnVisited(ArrayList<AState> listNeighboors){
+    private ArrayList<AState> neighboorsUnVisited(ArrayList<AState> listNeighboors){
+        if(listNeighboors.isEmpty())
+            return null;
         for (AState state:listNeighboors) {
             if(visited.contains(state))
-                return true;
+                listNeighboors.remove(state);
         }
-        return false;
+        return listNeighboors;
     }
 
 }

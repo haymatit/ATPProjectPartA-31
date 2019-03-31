@@ -6,23 +6,24 @@ import java.util.ArrayList;
 
 public class SearchableMaze implements ISearchable{
     Maze grid;
-    MazeState[][] states;
-    int StartRow;
-    int StartCol;
-    int EndRow;
-    int EndCol;
+    MazeState endState;
+//    MazeState[][] states;
+//    int StartRow;
+//    int StartCol;
+//    int EndRow;
+//    int EndCol;
 
     public SearchableMaze(Maze m) {
         this.grid=m;
-        StartRow=grid.getStartPosition().getRowIndex();
-        StartCol=grid.getStartPosition().getColumnIndex();
-        EndRow=grid.getGoalPosition().getRowIndex();
-        EndCol=grid.getGoalPosition().getColumnIndex();
-        states=new MazeState[grid.getRowSize()][grid.getColSize()];
-        for (int i=0;i<grid.getRowSize();i++){
-            for(int j=0;j<grid.getColSize();j++)
-                states[i][j]=new MazeState(new Position(i,j));
-        }
+//        StartRow=grid.getStartPosition().getRowIndex();
+//        StartCol=grid.getStartPosition().getColumnIndex();
+//        EndRow=grid.getGoalPosition().getRowIndex();
+//        EndCol=grid.getGoalPosition().getColumnIndex();
+//        states=new MazeState[grid.getRowSize()][grid.getColSize()];
+//        for (int i=0;i<grid.getRowSize();i++){
+//            for(int j=0;j<grid.getColSize();j++)
+//                states[i][j]=new MazeState(new Position(i,j));
+//        }
     }
 
     @Override

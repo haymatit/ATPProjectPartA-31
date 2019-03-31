@@ -7,14 +7,20 @@ public abstract class AState {
     private AState cameFrom;
 
     public AState(AState cameFrom) {
-        this.cameFrom = cameFrom;
+       this.cameFrom = cameFrom;
     }
 
     @Override
     public abstract boolean equals(Object o);
 
     @Override
-    public String toString() {
-        return "AState{}";
+    public abstract String toString();
+
+    public void setCameFrom(AState cameFrom){
+        this.cameFrom=cameFrom;
+    }
+
+    public AState getCameFrom() {
+        return cameFrom;
     }
 }

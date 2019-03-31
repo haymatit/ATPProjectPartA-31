@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class MazeState extends AState{
     private Position current;
+    private int cost;
 
     public MazeState(Position current) {
         super(null);

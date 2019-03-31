@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class SearchableMaze implements ISearchable{
     Maze grid;
     MazeState endState;
+    MazeState startState;
 //    MazeState[][] states;
 //    int StartRow;
 //    int StartCol;
@@ -15,6 +16,8 @@ public class SearchableMaze implements ISearchable{
 
     public SearchableMaze(Maze m) {
         this.grid=m;
+        endState=new MazeState(grid.getGoalPosition());
+        startState=new MazeState(grid.getStartPosition());
 //        StartRow=grid.getStartPosition().getRowIndex();
 //        StartCol=grid.getStartPosition().getColumnIndex();
 //        EndRow=grid.getGoalPosition().getRowIndex();
@@ -28,12 +31,12 @@ public class SearchableMaze implements ISearchable{
 
     @Override
     public AState getStartState() {
-        return states[StartRow][StartCol];
+        return startState;
     }
 
     @Override
     public AState getEndState() {
-        return states[EndRow][EndCol];
+        return endState;
     }
 
     @Override

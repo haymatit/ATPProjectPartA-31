@@ -12,13 +12,17 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     }
 
     public Solution solve(ISearchable s){
-        Solution sol=new Solution();
+
         stack.push(s.getStartState());
+        AState end=null;
         while(!stack.isEmpty()) {
             AState tmp = stack.pop();
             visited.add(tmp);
-            if (tmp.equals(s.getEndState()))
+            if (tmp.equals(s.getEndState())){
+                end=tmp;
                 break;
+            }
+
             for(AState node : s.getAllPossibleStates(tmp)) {
                 if (!visited.contains(node)) {
                     stack.push(node);
@@ -27,10 +31,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
             }
         }
         AState skipper=s.getEndState();
-        while(skipper!=null) {
-            sol.addToPath(skipper);
-            skipper=skipper.getCameFrom();
-        }
+        Solution sol=new Solution(end);
         return sol;
     }
 

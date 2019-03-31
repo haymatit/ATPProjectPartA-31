@@ -5,9 +5,11 @@ import java.util.Objects;
 
 public abstract class AState {
     private AState cameFrom;
+    private int cost;
 
-    public AState(AState cameFrom) {
+    public AState(AState cameFrom,int cost) {
        this.cameFrom = cameFrom;
+        this.cost = cost;
     }
 
     @Override

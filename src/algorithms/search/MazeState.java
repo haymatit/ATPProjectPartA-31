@@ -7,12 +7,12 @@ import java.util.Objects;
 
 public class MazeState extends AState{
     private Position current;
-    private int cost;
+
 
     public MazeState(Position current) {
-        super(null);
+        super(null,1);
         this.current = current;
-        this.cost = 1;
+
     }
 
 //    public MazeState(MazeState cameFrom,Position current) {
@@ -33,7 +33,6 @@ public class MazeState extends AState{
     public String toString() {
         return "MazeState{" +
                 "current=" + current.toString() +
-                ", cost=" + cost +
                 '}';
     }
 

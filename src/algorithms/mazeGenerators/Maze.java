@@ -13,16 +13,31 @@ public class Maze {
     public static final char WALL_CHAR = '▓';
     private Position startPosition;
     private Position goalPosition;
+    private int rowSize;
+    private int colSize;
+
     public Maze(int row, int col) {
         grid=new int[row][col];
         this.goalPosition=new Position(row-1,col-1);
         this.startPosition=new Position(0,0);
+        rowSize=row;
+        colSize=col;
     }
 
     public Maze(int[][] grid,Position startPosition,Position goalPosition){
         this.grid=grid;
         this.goalPosition=goalPosition;
         this.startPosition=startPosition;
+        rowSize=grid.length;
+        colSize=grid[0].length;
+    }
+
+    public int getRowSize() {
+        return rowSize;
+    }
+
+    public int getColSize() {
+        return colSize;
     }
 
     public Position getStartPosition() {
@@ -76,6 +91,10 @@ public class Maze {
 
     public void setGoalPosition(int row, int col) {
         this.goalPosition=new Position(row,col);
+    }
+
+    public int getPositionType(int row,int col){
+        return grid[row][col];
     }
 
 }
